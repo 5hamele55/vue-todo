@@ -1,5 +1,5 @@
 <template>
-  <v-form ref="form">
+  <v-form v-on:submit.prevent="submitInput" ref="form">
     <v-text-field
       v-model="title"
       label="Нова справа"
@@ -36,6 +36,10 @@ export default {
         this.$emit("add-todo", newTodo);
         this.title = "";
       }
+    },
+    submitInput(e) {
+      e.preventDefault();
+      this.addTodo();
     }
   }
 };
