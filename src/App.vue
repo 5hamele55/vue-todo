@@ -13,7 +13,12 @@
                 <div class="d-flex align-center ml-3">
                   <v-checkbox v-model="todo.complited"></v-checkbox>
                   <strong class="mr-2">{{i + 1}}</strong>
-                  <span :class="{done: todo.complited}">{{todo.title}}</span>
+                  <input v-if="isEdit" v-model="todo.title" v-on:keyup="submitForm" />
+                  <span
+                    v-if="!isEdit"
+                    @dblclick="showEditForm()"
+                    :class="{done: todo.complited}"
+                  >{{todo.title}}</span>
                 </div>
               </div>
               <v-card-actions>
@@ -48,7 +53,8 @@ export default {
       { id: 3, title: "Купити молоко", complited: false }
     ],
     items: ["Всі", "Завершені", "Незавершені"],
-    filter: "Незавершені"
+    filter: "Всі",
+    isEdit: false
   }),
   computed: {
     // eslint-disable-next-line vue/return-in-computed-property
@@ -70,6 +76,15 @@ export default {
     },
     addTodo(todo) {
       this.todos.push(todo);
+    },
+    showEditForm() {
+      this.isEdit = !this.isEdit;
+    },
+    submitForm(e) {
+      e.preventDefault();
+      if (e.keyCode === 13) {
+        this.showEditForm();
+      }
     }
   }
 };
