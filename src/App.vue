@@ -13,7 +13,7 @@
                 <div class="d-flex align-center ml-3">
                   <v-checkbox v-model="todo.complited"></v-checkbox>
                   <strong class="mr-2">{{i + 1}}</strong>
-                  <input v-if="isEdit" v-model="todo.title" v-on:keyup="submitForm" />
+                  <input v-if="isEdit" v-model="todo.title" @keyup="submitForm" />
                   <span
                     v-if="!isEdit"
                     @dblclick="showEditForm()"
@@ -81,7 +81,6 @@ export default {
       this.isEdit = !this.isEdit;
     },
     submitForm(e) {
-      e.preventDefault();
       if (e.keyCode === 13) {
         this.showEditForm();
       }
