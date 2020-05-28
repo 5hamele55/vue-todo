@@ -8,7 +8,6 @@
       append-icon="mdi-plus"
       @click:append="addTodo"
     ></v-text-field>
-    <!-- <v-btn class="success mb-3" @click="addTodo">Додати</v-btn> -->
   </v-form>
 </template>
 
