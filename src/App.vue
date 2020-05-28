@@ -80,5 +80,6 @@ export default {
 .bg {
   background: #7f7fd5;
   background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5);
+  height: 100%;
 }
 </style>
